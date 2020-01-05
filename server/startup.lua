@@ -82,6 +82,25 @@ os.loadAPI("/disk/sfunc.lua")
 --shell.openTab("rom/programs/advanced/multishell.lua")
 --shell.openTab("rom/programs/advanced/multishell.lua")
 
+local ver = tonumber(fs.open("/disk/.version","r").readAll()) fs.open("/disk/.version","r").close()
+local newver = tonumber(sitems.gitget("server/.version"))
+if newver and newver ~= ver then
+	term.clear()
+	term.setCursorPos(1,1)
+	print("New version detected, currently downloading, please wait!")
+	sitems.gitsave("sinstall.lua","/.sinstall")
+	shell.run("/.sinstall")
+	shell.run("delete /.sinstall")
+	local cx, cy = term.getCursorPos()
+	for i=1,10 do
+		term.setCursorPos(cx, cy)
+		term.clearLine()
+		print("Rebooting in " .. tostring(11-i) .. " seconds")
+		sleep(1)
+	end
+	os.reboot()
+end
+
 parallel.waitForAny(function()
 	while not ok do
 		ok, err = pcall(dofile,"/disk/init.lua")
