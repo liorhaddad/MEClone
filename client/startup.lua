@@ -1,0 +1,33 @@
+settings.set("bios.use_multishell", true)
+--shell.openTab("rom/programs/advanced/multishell.lua")
+--shell.openTab("rom/programs/advanced/multishell.lua")
+
+while not ok do
+	ok, err = pcall(dofile,"/disk/init.lua")
+	if not ok then
+		term.setBackgroundColor(colors.blue)
+		term.setTextColor(colors.white)
+		term.setCursorBlink(false)
+		term.clear()
+		term.setCursorPos(1,1)
+		print("An error has occurred!")
+		print(err)
+		write("Restarting in 5...")
+		x, y = term.getCursorPos()
+		term.setCursorPos(x-4,y)
+		write("5")
+		sleep(1)
+		term.setCursorPos(x-4,y)
+		write("4")
+		sleep(1)
+		term.setCursorPos(x-4,y)
+		write("3")
+		sleep(1)
+		term.setCursorPos(x-4,y)
+		write("2")
+		sleep(1)
+		term.setCursorPos(x-4,y)
+		write("1")
+		sleep(1)
+	end
+end

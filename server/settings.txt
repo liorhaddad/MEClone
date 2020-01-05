@@ -1,0 +1,22 @@
+-- Side of the wired modem
+local modemSide = "back"
+
+-- Name of chest, set to nil if turtle
+local transferInventory = "minecraft:ironchest_diamond_12"
+
+-- Receive port (for wireless rednet connections)
+local receivePort = 956
+
+
+
+
+
+
+
+
+
+
+
+
+local isTurtle = function() if turtle then return true else return false end end
+return isTurtle, modemSide, transferInventory, receivePort

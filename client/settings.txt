@@ -1,0 +1,24 @@
+-- Side of the wired modem
+local modemSide = "top"
+
+-- Port to communicate on
+local sendPort = 956
+
+-- ID of remote computer
+local computerId = 45
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+return modemSide, sendPort, computerId
