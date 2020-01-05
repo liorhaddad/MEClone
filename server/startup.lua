@@ -79,6 +79,7 @@ end
 
 settings.set("bios.use_multishell", true)
 os.loadAPI("/disk/sfunc.lua")
+os.loadAPI("/disk/sitems.lua")
 --shell.openTab("rom/programs/advanced/multishell.lua")
 --shell.openTab("rom/programs/advanced/multishell.lua")
 

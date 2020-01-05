@@ -17,7 +17,7 @@ end
 
 function gitget(filelocation)
 	local site = http.get("https://raw.githubusercontent.com/liorhaddad/MEClone/master/" .. filelocation)
-	if site == nil then
+	if not (site == nil) then
 		local sitetext = site.readAll()
 		site.close()
 		return sitetext
