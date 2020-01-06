@@ -18,10 +18,12 @@ network.open(sendPort)
 
 
 print("[System] Loading remote variables...")
-_G.ME["params"] = {}
-while _G.ME["params"].storageMax == nil do
+while not _G.ME["params"] do
 	rednet.send(computerId, "getParams","ME:" .. sendPort)
-	_, _G.ME["params"], _ = rednet.receive("MEsent:" .. sendPort,1)
+	local _, s, _ = rednet.receive("MEsent:" .. sendPort,1)
+	if s and s.network then
+		_G.ME["params"] = s
+	end
 end
 local network = _G.ME["params"].network
 local chests = _G.ME["params"].chests

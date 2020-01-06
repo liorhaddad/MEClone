@@ -149,11 +149,11 @@ parallel.waitForAny(function()
 		_G.ME.newparams = {}
 		if msg=="getParams" then
 			local s
-			while not s or not s=={} do
+			while not s or not type(s)=="table" do
 				s = _G.ME["params"]
 			end
 			sleep(0.1)
-			rednet.send(id, _G.ME["params"], "MEsent:" .. receivePort)
+			rednet.send(id, s, "MEsent:" .. receivePort)
 		elseif msg=="refresh" then
 			ret = refresh()
 			sleep(0.1)
